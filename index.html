@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="inputs">
+
+        <div class="dropdown-container">
+            <label for="options">Select an option:</label>
+            <select id="mydropdown" name="options">
+                <option  class="opt-items" value="FCFS" id="1">First Come First Serve, FCFS</option>
+                <option class="opt-items" value="RR" id="2">Round-robin, RR</option>
+                <option  class="opt-items"value="SRTF" id="3">Shortest Remaining Time First, SRTF</option>
+            </select>
+        </div>
+
+        <div class="arrivaltime">
+            <label for="at">Arrival Time:</label>
+            <input type="text" placeholder="e.g. 0 2 4 6" id="at">
+        </div>
+
+        <div class="Buztime">
+            <label for="bt">Burst Times:</label>
+            <input type="text" placeholder="e.g.  2 4 6 8 " id="bt">
+        </div>
+        <div class="Timequantum">
+            <label for="bt">Time Quantum:</label>
+            <input type="text" placeholder="e.g.  2 " id="bt">
+        </div>
+        <button class="btn">solve</button>
+    </div>
+
+<div class="output">
+    <header>
+        <h1>Output</h1>
+         <p class="para"></p>
+    </header>
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Job</th>
+                    <th>Arrival Time</th>
+                    <th>Burst Time</th>
+                    <th>Finish Time</th>
+                    <th>Turnaround</th>
+                    <th>waiting Time</th>
+                </tr>
+            </thead>
+            <tbody  class="tablebody">
+                <!-- by js -->
+            </tbody>
+               
+             <tfoot>
+                <tr>
+                    <th colspan="4">Average</th>
+                    <th >data</th>
+                    <th >data</th>
+                </tr>
+             </tfoot>
+        </table>
+    </div>
+</div>
+
+</body>
+<script src="app.js"></script>
+</html>

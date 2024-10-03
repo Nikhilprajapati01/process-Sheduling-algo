@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.inputs{
+    width: 100%;
+    padding: 30px 0px;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+label{
+    font-size: 17px;
+}
+.btn{
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: none;
+    background: rgb(120, 177, 246);
+    font-size: 16px;
+}
+
+select , #at ,#bt{
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+.Timequantum{
+    display: none;
+}
+.output{
+    /* border: 2px solid rgb(140 140 140); */
+    /* margin-top: 5rem; */
+    width: 80%;
+    height: 60%;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   display: none;
+
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 6rem;
+    align-items: center;
+    
+}
+header p{
+    background-color: aquamarine;
+}
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+table{
+    width: 80%;  
+ border-collapse: collapse;
+  font-family: sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+thead {
+  background-color: rgb(228 240 245);
+}
+
+th,
+td{
+  border: 1px solid rgb(160 160 160);
+  padding: 10px 10px;
+}
