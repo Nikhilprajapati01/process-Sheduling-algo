@@ -4,12 +4,24 @@ let btn = document.querySelector('.btn')
 const tbody = document.querySelector('.tablebody')
 const output = document.querySelector('.output')
 const arrivalinput = document.querySelector('#at');
+const tfooter =  document.querySelector('.footer');
 // console.log(dropdown.value);
 
 
 
 dropdown.addEventListener('change', ()=>{
     tbody.innerHTML = " ";
+    tfooter.innerHTML = " ";
+    tbody.innerHTML = " "
+    output.style.display  = 'none';
+    display = 1;
+    if(dropdown.value === 'RR'){
+        document.querySelector('.Timequantum').style.display = "block";
+    }
+    else{
+        document.querySelector('.Timequantum').style.display = "none";
+    }
+    
     
  })
  
@@ -23,6 +35,8 @@ dropdown.addEventListener('change', ()=>{
         output.style.display  = 'none';
         display = 0
       }
+
+    
  } 
 
  
@@ -31,7 +45,12 @@ dropdown.addEventListener('change', ()=>{
      let finishtime = [];
      let turnaroundarr = [];
      let waitingtimearr = [];
-     let gaintchart = ['A', 'B', 'C','D','E'];
+     let Timequantumarr = [];
+    
+     
+     let gaintchart = ['A', 'B', 'C','D','E','F','G','H'];
+
+
      function storeInput() {
         const arrivalinput = document.getElementById("at").value;
         // Remove all spaces from the input value
@@ -47,21 +66,33 @@ dropdown.addEventListener('change', ()=>{
         burstt = noSpaceburst;
         // arrivalarr.map(Number);
 
+        // for time quantam
+        const timequantumtt = document.getElementById("tt").value;
+         Timequantumarr = timequantumtt.replace(/\s+/g,'');
+
         // Clear the input field
         document.getElementById("at").value = '';
         document.getElementById("bt").value = '';
-
-        calculatefinishtime();
-        turnaroundTime()
-        waitingtime()
-        firstcome();
+        document.getElementById("tt").value = '';
+         
+        
+        if(dropdown.value === 'FCFS'){
+            calculatefinishtime();
+            turnaroundTime()
+            waitingtime()
+            firstcome();
+        }else if(dropdown.value === 'RR'){
+            Robincome();
+        }else if(dropdown.value === 'SRTF'){
+            timefirst();
+        }
+    
      }
 
      function calculatefinishtime (){
         
         let currentindex = Number(arrivalarr[0]) + Number(burstt[0]);
         finishtime.push(currentindex);
-        console.log(finishtime[0]);
         
        for(let i =1; i<arrivalarr.length; i++){
         let start = Math.max((finishtime[i - 1]), Number(arrivalarr[i]));
@@ -73,11 +104,27 @@ dropdown.addEventListener('change', ()=>{
         // console.log(finishtime);
     
     }
+
+    
     function turnaroundTime (){
         for(let i = 0; i<arrivalarr.length; i++){
             turnaroundarr[i] =  Number(finishtime[i]) - Number(arrivalarr[i]);
         }
+        
     }
+    // total of tat
+    function Averageoftat (){
+
+        let total = 0;
+        for (let i = 0; i < turnaroundarr.length; i++) {
+            total += Number(turnaroundarr[i]);
+            
+        }
+        return avg = total/ turnaroundarr.length;
+    }
+      
+    
+    
 
     function waitingtime (){
         for(let i = 0; i<burstt.length; i++){
@@ -86,8 +133,16 @@ dropdown.addEventListener('change', ()=>{
     }
     
 
-  
-      
+//   Average of wat
+function Averageofwat (){
+
+    let total = 0;
+    for (let i = 0; i < waitingtimearr.length; i++) {
+        total += Number(waitingtimearr[i]);
+    }
+    return avg = total/ waitingtimearr.length;
+}
+      // for output in fcfs
 function firstcome(){
     // console.log("first:",arr);
     for(let i = 0; i<arrivalarr.length; i++){
@@ -96,20 +151,91 @@ function firstcome(){
         <td>${arrivalarr[i]}</td>
         <td>${burstt[i]}</td>
         <td>${finishtime[i]}</td>
-        <td>${turnaroundarr[i]}</td>;
+        <td>${turnaroundarr[i]}</td>
         <td>${waitingtimearr[i]}</td>`
         tbody.appendChild(row);
     }
+    tfooter.innerHTML = ` 
+                 <tr>
+                    <th colspan="4">Average</th>
+                    <th >${Averageoftat()}</th>
+                    <th >${Averageofwat()}</th>
+                </tr>`
+
 }
 
 
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// output for rr
+
+function Robincome(){
+    // console.log("first:",arr);
+    for(let i = 0; i<arrivalarr.length; i++){
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${gaintchart[i]}</td>
+        <td>${arrivalarr[i]}</td>
+        <td>${burstt[i]}</td>`
+        // <td>${finishtime[i]}</td>
+        // <td>${turnaroundarr[i]}</td>
+        // <td>${waitingtimearr[i]}</td>`
+        tbody.appendChild(row);
+    }
+    tfooter.innerHTML = ` 
+                 <tr>
+                    <th colspan="4">Average</th>
+                    <th ></th>
+                    <th ></th>
+                </tr>`
+
+}
+ 
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///  output for time first
+function timefirst(){
+    // console.log("first:",arr);
+    for(let i = 0; i<arrivalarr.length; i++){
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${gaintchart[i]}</td>
+        <td>${arrivalarr[i]}</td>
+        <td>${burstt[i]}</td>`
+        // <td>${finishtime[i]}</td>
+        // <td>${turnaroundarr[i]}</td>
+        // <td>${waitingtimearr[i]}</td>`
+        tbody.appendChild(row);
+    }
+    tfooter.innerHTML = ` 
+                 <tr>
+                    <th colspan="4">Average</th>
+                    <th >${Averageoftat()}</th>
+                    <th >${Averageofwat()}</th>
+                </tr>`
+
+}
+
+
+
     btn.addEventListener('click' ,()=>{
+        
         header.textContent = dropdown.value;
             showoutput()
-            if(dropdown.value === 'FCFS'){
-                storeInput();
-            }
-        
+            storeInput();
+            
         
         
     })

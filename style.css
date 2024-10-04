@@ -10,7 +10,7 @@ body {
 
 .inputs{
     width: 100%;
-    padding: 30px 0px;
+    padding: 30px 10px;
     /* border: 2px solid black; */
     display: flex;
     justify-content: space-around;
@@ -26,9 +26,10 @@ label{
     border: none;
     background: rgb(120, 177, 246);
     font-size: 16px;
+    
 }
 
-select , #at ,#bt{
+select , #at ,#bt, #tt{
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -82,4 +83,74 @@ th,
 td{
   border: 1px solid rgb(160 160 160);
   padding: 10px 10px;
+}
+
+@media (max-width:950px) {
+    .inputs{
+        padding: 10px;
+       flex-direction: column;
+       gap: 30px;
+       height: fit-content;
+    }
+    .output{
+        width: 90%;
+        height: fit-content;
+        margin-top: 10rem;
+    }
+    .table{
+        overflow-x: scroll;
+        padding-left: 10px;
+        justify-content: flex-start;
+        margin-top: 2rem;
+
+    }
+}
+@media (max-width: 440px) {
+    .inputs{
+        padding: 10px;
+       flex-direction: column;
+       gap: 30px;
+       height: fit-content;
+    }
+    
+    .dropdown-container{
+        margin-left: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #mydropdown{
+        width: 90%;
+    }
+    .arrivaltime, .Buztime{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+        gap: 10px;
+    }
+    .Timequantum{
+        width: 90%;
+        margin-left: 15px;
+        gap: 10px;
+    }
+    
+    .btn{
+        padding: 8px 20px;
+        font-size: 1.2rem;
+    }
+    .output{
+        width: 100%;
+        height: fit-content;
+        margin-top: 15rem;
+    }
+    .table{
+        overflow-x: scroll;
+        padding-left: 10px;
+        justify-content: flex-start;
+        margin-top: 2rem;
+
+    }
+    table{
+        font-size: 10px;
+    }
 }
