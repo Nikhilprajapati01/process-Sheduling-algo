@@ -42,7 +42,6 @@ select , #at ,#bt, #tt{
     /* border: 2px solid rgb(140 140 140); */
     /* margin-top: 5rem; */
     width: 80%;
-    height: 60%;
   position: relative;
   position: absolute;
   top: 50%;
@@ -67,6 +66,7 @@ header p{
     justify-content: center;
     align-items: center;
     margin-top: 5rem;
+    margin-bottom: 2rem;
 }
 table{
     width: 80%;  
@@ -83,6 +83,13 @@ th,
 td{
   border: 1px solid rgb(160 160 160);
   padding: 10px 10px;
+}
+@media (max-width:1100px) {
+    .output{
+        width: 90%;
+        height: fit-content;
+        margin-top: 6rem;
+    }
 }
 
 @media (max-width:950px) {
@@ -142,7 +149,7 @@ td{
     .output{
         width: 100%;
         height: fit-content;
-        margin-top: 15rem;
+        margin-top: 18rem;
     }
     .table{
         overflow-x: scroll;
